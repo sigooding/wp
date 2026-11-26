@@ -1,0 +1,73 @@
+/* Styling for the native Elementor Free demo widgets. Edit the widgets in Elementor; use the Customizer for theme-wide colours. */
+.nexora-e-section{width:calc(100% - 64px);max-width:var(--nexora-width,1320px);margin-left:auto;margin-right:auto}
+.nexora-e-section>.elementor-container{max-width:var(--nexora-width,1320px)}
+.nexora-e-hero{margin-top:25px;border-radius:12px;overflow:hidden;min-height:380px;background-color:var(--nexora-deep,#0E3B33)}
+.nexora-e-hero>.elementor-container{min-height:380px;align-items:center}
+.nexora-e-hero .nexora-e-hero-content>.elementor-element-populated{padding:58px 8%}
+.nexora-e-hero-eyebrow .elementor-heading-title{color:#c5e4cd;font:700 10px/1.3 Manrope,sans-serif;letter-spacing:1.7px}
+.nexora-e-hero-title .elementor-heading-title{color:#fff;font:700 clamp(34px,3.5vw,48px)/1.18 Manrope,sans-serif;letter-spacing:-1.7px}
+.nexora-e-hero-text{max-width:450px;color:#d9e6dc;font:400 14px/1.75 'DM Sans',sans-serif}
+.nexora-e-hero-text p,.nexora-e-lead p,.nexora-e-description p,.nexora-e-card-text p{margin:0}
+.nexora-e-hero-button .elementor-button{background:#e4f1e6;color:#0E3B33;border-radius:6px;padding:15px 20px;font:700 12px 'DM Sans',sans-serif}
+.nexora-e-eyebrow .elementor-heading-title,.nexora-e-card-label .elementor-heading-title{color:var(--nexora-accent,#548565);font:700 10px/1.4 'DM Sans',sans-serif;letter-spacing:1.35px}
+.nexora-e-page-title .elementor-heading-title{color:var(--nexora-text,#1d392d);font:700 clamp(32px,3.3vw,42px)/1.18 Manrope,sans-serif;letter-spacing:-1.4px}
+.nexora-e-lead{max-width:680px;color:#778b7e;font:400 15px/1.7 'DM Sans',sans-serif}
+.nexora-e-intro{padding:58px 0 24px}
+.nexora-e-title-row{padding:36px 0 7px}
+.nexora-e-section-title .elementor-heading-title{color:var(--nexora-text,#20392f);font:700 22px/1.35 Manrope,sans-serif;letter-spacing:-.7px}
+.nexora-e-description{color:#899b8e;font:400 12px/1.6 'DM Sans',sans-serif}
+.nexora-e-tool-row,.nexora-e-card-row{margin-top:6px;margin-bottom:8px}
+.nexora-e-tool-row>.elementor-container,.nexora-e-card-row>.elementor-container,.nexora-e-split>.elementor-container,.nexora-e-support>.elementor-container{gap:16px}
+.nexora-e-tool-card,.nexora-e-resource-card{border:1px solid #e3ebe5;border-radius:9px;background:#fff;overflow:hidden}
+.nexora-e-tool-card>.elementor-element-populated,.nexora-e-resource-card>.elementor-element-populated{padding:21px!important}
+.nexora-e-tool-card .elementor-widget,.nexora-e-resource-card .elementor-widget{margin-bottom:12px}
+.nexora-e-tool-card .elementor-widget:last-child,.nexora-e-resource-card .elementor-widget:last-child{margin-bottom:0}
+.nexora-e-icon{width:43px;height:43px;display:grid;place-items:center;background:#eaf4ed;border-radius:7px}
+.nexora-e-icon .elementor-icon{font-size:20px;color:var(--nexora-accent,#2f6a4e)}
+.nexora-e-card-image img{width:100%;height:145px;object-fit:cover;border-radius:6px;display:block}
+.nexora-e-card-title .elementor-heading-title{color:var(--nexora-text,#274334);font:700 15px/1.35 Manrope,sans-serif;letter-spacing:-.2px}
+.nexora-e-card-text{color:#5a6e63;font:400 12px/1.6 'DM Sans',sans-serif}
+.nexora-e-card-label .elementor-heading-title{font-size:9px;letter-spacing:1px}
+.nexora-e-link-button .elementor-button{background:transparent;color:var(--nexora-accent,#4b8060);font:700 11px 'DM Sans',sans-serif;padding:4px 0;border-radius:0}
+.nexora-e-link-button .elementor-button:hover{background:transparent;color:var(--nexora-deep,#0E3B33)}
+.nexora-e-split{margin-top:44px}
+.nexora-e-split-column,.nexora-e-support-form,.nexora-e-support-info{background:white;border:1px solid #e4ebe6;border-radius:9px}
+.nexora-e-split-column>.elementor-element-populated,.nexora-e-support-form>.elementor-element-populated,.nexora-e-support-info>.elementor-element-populated{padding:25px!important}
+.nexora-e-featured-title .elementor-heading-title{font:700 12px Manrope,sans-serif;color:var(--nexora-text,#294237)}
+.nexora-e-featured .elementor-widget{margin-bottom:10px}
+.nexora-e-featured .nexora-e-featured-title{padding-top:8px;border-top:1px solid #edf2ee}
+.nexora-e-cta{margin-top:38px;margin-bottom:50px;padding:16px;background:#e9f3ea;border:1px solid #dfede2;border-radius:9px}
+.nexora-e-cta>.elementor-container{align-items:center}
+.nexora-e-cta-action{text-align:right}
+.nexora-e-primary-button .elementor-button{background:var(--nexora-accent,#0E6B57);color:white;border-radius:6px;padding:15px 20px;font:700 12px 'DM Sans',sans-serif}
+.nexora-e-primary-button .elementor-button:hover{background:var(--nexora-deep,#0E3B33);color:white}
+.nexora-e-support,.nexora-e-news-page,.nexora-e-catalogue{padding-top:15px}
+.nexora-news-list{background:#fff;border:1px solid #edf1ee;border-radius:8px;padding:0 16px}
+.nexora-news-item{display:flex;align-items:center;gap:14px;min-height:85px;border-bottom:1px solid #edf1ee;color:inherit;text-decoration:none}
+.nexora-news-item:last-child{border:0}.nexora-news-date{width:44px;height:48px;display:flex;flex-shrink:0;flex-direction:column;align-items:center;justify-content:center;background:#f5faf6;border:1px solid #e2ebe4;border-radius:6px}
+.nexora-news-date strong{font:700 16px Manrope,sans-serif;color:#477455}.nexora-news-date small{font:700 8px 'DM Sans',sans-serif;color:#4f7059;letter-spacing:1px}
+.nexora-news-copy{display:flex;min-width:0;flex:1;flex-direction:column;gap:4px}.nexora-news-copy small{color:#78a485;font-size:8px;font-weight:700;letter-spacing:1px}.nexora-news-copy strong{font:700 12px Manrope,sans-serif}.nexora-news-copy span{color:#5f7368;font-size:10px}.nexora-news-arrow{color:#94b39c}
+.nexora-sample-products{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}.nexora-sample-product{background:white;border:1px solid #e4ebe6;border-radius:9px;overflow:hidden}.nexora-sample-product img{display:block;width:100%;aspect-ratio:1.2;object-fit:cover}.nexora-sample-product div{padding:18px}.nexora-sample-product small{font-size:9px;letter-spacing:1px;color:#83a18c;font-weight:700}.nexora-sample-product h3{font:700 15px Manrope,sans-serif;margin:9px 0;color:var(--nexora-text,#294334)}.nexora-sample-product p{color:#5a6e63;font-size:12px;line-height:1.6}.nexora-sample-product a{font-size:11px;font-weight:700;color:var(--nexora-accent,#4b8060)}.nexora-demo-disclaimer,.nexora-shortcode-empty{font-size:11px;color:#5a6e63;margin-top:16px}
+.nexora-partner-form{display:grid;gap:16px}.nexora-partner-form label{display:grid;gap:6px;color:#486454;font:700 11px 'DM Sans',sans-serif}.nexora-form-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px}.nexora-partner-form input,.nexora-partner-form select,.nexora-partner-form textarea{width:100%;border:1px solid #dfe9e1;border-radius:5px;background:#fbfcfb;padding:12px;font:400 12px 'DM Sans',sans-serif;color:#294535}.nexora-partner-form textarea{resize:vertical}.nexora-partner-form button{justify-self:start;border:0;border-radius:6px;background:var(--nexora-accent,#0E6B57);color:#fff;padding:14px 20px;font:700 12px 'DM Sans',sans-serif;cursor:pointer}.nexora-partner-form small{font-size:10px;color:#9baaa0}.nexora-honeypot{position:absolute!important;left:-9999px!important;top:auto;width:1px;height:1px;overflow:hidden}.nexora-form-message{padding:14px;border-radius:5px;font-size:12px}.nexora-form-message.is-success{background:#e7f5ea;color:#356e48}.nexora-form-message.is-error{background:#fff1ed;color:#9b5043}
+/* Beat Elementor's default kit styles, while leaving per-widget Elementor styles editable. */
+.elementor .nexora-e-hero-eyebrow .elementor-heading-title{color:#c5e4cd;font:700 10px/1.3 Manrope,sans-serif;letter-spacing:1.7px}
+.elementor .nexora-e-hero-title .elementor-heading-title{color:#fff;font:700 clamp(34px,3.5vw,48px)/1.18 var(--nexora-heading-font,Manrope),sans-serif;letter-spacing:-1.7px}
+.elementor .nexora-e-hero-text{color:#d9e6dc;font:400 14px/1.75 'DM Sans',sans-serif}
+.elementor .nexora-e-hero-button .elementor-button{background:#e4f1e6;color:#0E3B33;border-radius:6px;padding:15px 20px;font:700 12px 'DM Sans',sans-serif}
+.elementor .nexora-e-eyebrow .elementor-heading-title,.elementor .nexora-e-card-label .elementor-heading-title{color:var(--nexora-accent,#548565);font:700 10px/1.4 'DM Sans',sans-serif;letter-spacing:1.35px}
+.elementor .nexora-e-page-title .elementor-heading-title{color:var(--nexora-text,#1d392d);font:700 clamp(32px,3.3vw,42px)/1.18 var(--nexora-heading-font,Manrope),sans-serif;letter-spacing:-1.4px}
+.elementor .nexora-e-section-title .elementor-heading-title{color:var(--nexora-text,#20392f);font:700 22px/1.35 var(--nexora-heading-font,Manrope),sans-serif;letter-spacing:-.7px}
+.elementor .nexora-e-card-title .elementor-heading-title{color:var(--nexora-text,#274334);font:700 15px/1.35 var(--nexora-heading-font,Manrope),sans-serif;letter-spacing:-.2px}
+.elementor .nexora-e-featured-title .elementor-heading-title{font:700 12px var(--nexora-heading-font,Manrope),sans-serif;color:var(--nexora-text,#294237)}
+.elementor .nexora-e-lead{color:#778b7e;font:400 15px/1.7 'DM Sans',sans-serif}
+.elementor .nexora-e-description,.elementor .nexora-e-card-text{color:#899b8e;font:400 12px/1.6 'DM Sans',sans-serif}
+.elementor .nexora-e-link-button .elementor-button{background:transparent;color:var(--nexora-accent,#4b8060);font:700 11px 'DM Sans',sans-serif;padding:4px 0;border-radius:0}
+.elementor .nexora-e-primary-button .elementor-button{background:var(--nexora-accent,#0E6B57);color:white;border-radius:6px;padding:15px 20px;font:700 12px 'DM Sans',sans-serif}
+.elementor .nexora-e-card-image img{width:100%;height:145px;object-fit:cover;border-radius:6px;display:block}
+.elementor .elementor-column .elementor-widget-wrap>.nexora-e-icon{width:43px;height:43px}
+.elementor .elementor-widget.nexora-e-icon .elementor-icon{font-size:20px;color:var(--nexora-accent,#2f6a4e)}
+.elementor .elementor-widget.nexora-e-icon .elementor-icon svg{fill:var(--nexora-accent,#2f6a4e)}
+.elementor .nexora-e-title-row .elementor-widget,.elementor .nexora-e-intro .elementor-widget{margin-bottom:10px}
+@media(max-width:1360px){.nexora-e-section{width:calc(100% - 64px)}}
+@media(max-width:800px){.nexora-e-section{width:calc(100% - 36px)}.nexora-e-tool-row>.elementor-container,.nexora-e-card-row>.elementor-container,.nexora-e-split>.elementor-container,.nexora-e-support>.elementor-container{flex-wrap:wrap}.nexora-e-tool-card,.nexora-e-resource-card{width:calc(50% - 8px)!important}.nexora-e-split-column,.nexora-e-support-form,.nexora-e-support-info{width:100%!important}.nexora-sample-products{grid-template-columns:repeat(2,1fr)}.nexora-e-cta-action{text-align:left}}
+@media(max-width:520px){.nexora-e-section{width:calc(100% - 28px)}.nexora-e-hero .nexora-e-hero-content>.elementor-element-populated{padding:40px 22px!important}.nexora-e-hero-title .elementor-heading-title{font-size:33px}.nexora-e-tool-card,.nexora-e-resource-card{width:100%!important}.nexora-form-grid{grid-template-columns:1fr}.nexora-e-intro{padding:40px 0 15px}}
