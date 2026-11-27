@@ -8,7 +8,11 @@ $show_contact = get_theme_mod( 'nexora_show_footer_contact', true ) && ( $phone 
 ?>
 <footer class="site-footer">
   <div class="shell footer-main">
-    <div class="footer-about"><a class="footer-brand" href="<?php echo esc_url( home_url( '/' ) ); ?>"><?php echo esc_html( get_bloginfo( 'name' ) ?: 'nexora' ); ?></a><p><?php echo esc_html( get_theme_mod( 'nexora_footer_tagline', 'Making smarter living simpler, together.' ) ); ?></p></div>
+    <div class="footer-about"><a class="footer-brand" href="<?php echo esc_url( home_url( '/' ) ); ?>"><?php
+      $footer_logo = function_exists( 'nexora_trade_dark_logo_url' ) && get_theme_mod( 'nexora_dark_footer_logo', true ) ? nexora_trade_dark_logo_url() : '';
+      if ( $footer_logo ) { echo '<img class="footer-logo" src="' . esc_url( $footer_logo ) . '" alt="' . esc_attr( get_bloginfo( 'name' ) ) . '">'; }
+      else { echo esc_html( get_bloginfo( 'name' ) ?: 'nexora' ); }
+    ?></a><p><?php echo esc_html( get_theme_mod( 'nexora_footer_tagline', 'Making smarter living simpler, together.' ) ); ?></p></div>
     <div class="footer-links"><strong>EXPLORE</strong><?php if ( has_nav_menu( 'footer_explore' ) ) { wp_nav_menu( array( 'theme_location' => 'footer_explore', 'container' => false, 'menu_class' => 'nexora-footer-menu', 'depth' => 1 ) ); } else { ?><a href="<?php echo esc_url( nexora_trade_url( 'products' ) ); ?>">Products</a><a href="<?php echo esc_url( nexora_trade_url( 'technical' ) ); ?>">Technical</a><a href="<?php echo esc_url( nexora_trade_url( 'marketing' ) ); ?>">Marketing</a><?php } ?></div>
     <div class="footer-links"><strong>PARTNER RESOURCES</strong><?php if ( has_nav_menu( 'footer_resources' ) ) { wp_nav_menu( array( 'theme_location' => 'footer_resources', 'container' => false, 'menu_class' => 'nexora-footer-menu', 'depth' => 1 ) ); } else { ?><a href="<?php echo esc_url( nexora_trade_url( 'training' ) ); ?>">Training</a><a href="<?php echo esc_url( nexora_trade_url( 'downloads' ) ); ?>">Downloads</a><a href="<?php echo esc_url( nexora_trade_url( 'news' ) ); ?>">News &amp; updates</a><?php } ?></div>
     <div class="footer-links"><strong>HERE TO HELP</strong><p><?php echo esc_html( get_theme_mod( 'nexora_footer_help', 'Questions? We’re here to support you.' ) ); ?></p>

@@ -10,7 +10,9 @@ function nexora_sanitize_font( $value ) { return nexora_sanitize_choice( $value,
 function nexora_sanitize_font_size( $value ) { return nexora_sanitize_choice( $value, array( '13', '14', '15', '16' ), '14' ); }
 function nexora_sanitize_layout( $value ) { return nexora_sanitize_choice( $value, array( 'constrained', 'full' ), 'constrained' ); }
 function nexora_sanitize_posts_per_page( $value ) { return (string) max( 1, min( 48, absint( $value ) ) ); }
-function nexora_sanitize_logo_height( $value ) { return (string) max( 24, min( 96, absint( $value ) ) ); }
+function nexora_sanitize_logo_height( $value ) { return (string) max( 24, min( 160, absint( $value ) ) ); }
+function nexora_sanitize_dark_mode( $value ) { return (bool) $value; }
+function nexora_sanitize_dark_default( $value ) { return nexora_sanitize_choice( $value, array( 'light', 'dark', 'system' ), 'system' ); }
 function nexora_sanitize_slug_list( $value ) {
     $slugs = array();
     foreach ( explode( ',', strtolower( (string) $value ) ) as $slug ) {
@@ -40,7 +42,7 @@ function nexora_trade_customize( $customizer ) {
         'nexora_font_style' => array( 'Typography', 'modern', array( 'modern' => 'Modern (Manrope & DM Sans)', 'system' => 'System fonts' ), 'nexora_sanitize_font' ),
         'nexora_base_font_size' => array( 'Base text size', '14', array( '13' => 'Small (13px)', '14' => 'Regular (14px)', '15' => 'Comfortable (15px)', '16' => 'Large (16px)' ), 'nexora_sanitize_font_size' ),
         'nexora_page_layout' => array( 'Theme page layout', 'constrained', array( 'constrained' => 'Constrained width', 'full' => 'Full width' ), 'nexora_sanitize_layout' ),
-        'nexora_logo_height' => array( 'Logo height (px)', '48', array(), 'nexora_sanitize_logo_height' ),
+        'nexora_logo_height' => array( 'Logo height (px)', '56', array(), 'nexora_sanitize_logo_height' ),
     ) as $key => $config ) {
         $customizer->add_setting( $key, array( 'default' => $config[1], 'sanitize_callback' => $config[3] ) );
         $customizer->add_control( $key, array( 'label' => $config[0], 'section' => 'nexora_brand_options', 'type' => $config[2] ? 'select' : 'number', 'choices' => $config[2] ) );
@@ -54,6 +56,62 @@ function nexora_trade_customize( $customizer ) {
     }
     $customizer->add_setting( 'nexora_brand_label', array( 'default' => 'SMART HOME', 'sanitize_callback' => 'sanitize_text_field' ) );
     $customizer->add_control( 'nexora_brand_label', array( 'label' => 'Small label beside the logo', 'description' => 'Shown when no custom logo is uploaded.', 'section' => 'nexora_brand_options', 'type' => 'text' ) );
+
+    /* Dark-mode logo: the same upload pattern as Site Identity, but shown on dark backgrounds. */
+    $customizer->add_setting( 'nexora_dark_logo', array( 'default' => '', 'sanitize_callback' => 'esc_url_raw' ) );
+    $customizer->add_control( new WP_Customize_Image_Control( $customizer, 'nexora_dark_logo', array(
+        'label' => 'Logo for dark mode',
+        'description' => 'Optional. A light or white version of your logo. Shown in the header while dark mode is on, and in the footer. Leave blank to keep using the standard logo everywhere.',
+        'section' => 'nexora_brand_options',
+    ) ) );
+
+    /* ---- 1b. Dark mode ---- */
+    $customizer->add_section( 'nexora_dark_options', array(
+        'title' => __( 'Dark Mode', 'nexora-trade' ),
+        'description' => __( 'A light/dark switch in the header. Visitors can override it, and their choice is remembered in their browser.', 'nexora-trade' ),
+        'panel' => 'nexora_portal_options',
+    ) );
+    foreach ( array(
+        'nexora_dark_mode' => array( 'Enable dark mode', 'Adds the dark palette, the header switch and the dark-mode logo.', true ),
+        'nexora_dark_toggle' => array( 'Show the switch in the header', 'Turn off to keep dark mode available only as the starting mode below, with no visitor control.', true ),
+    ) as $key => $config ) {
+        $customizer->add_setting( $key, array( 'default' => $config[2], 'sanitize_callback' => 'nexora_sanitize_dark_mode' ) );
+        $customizer->add_control( $key, array( 'label' => $config[0], 'description' => $config[1], 'section' => 'nexora_dark_options', 'type' => 'checkbox' ) );
+    }
+    $customizer->add_setting( 'nexora_dark_default', array( 'default' => 'system', 'sanitize_callback' => 'nexora_sanitize_dark_default' ) );
+    $customizer->add_control( 'nexora_dark_default', array(
+        'label' => 'Colour scheme when a visitor first arrives',
+        'description' => '“Match the visitor’s device” follows their operating system setting and keeps following it until they use the switch.',
+        'section' => 'nexora_dark_options',
+        'type' => 'select',
+        'choices' => array( 'system' => 'Match the visitor’s device', 'light' => 'Always light', 'dark' => 'Always dark' ),
+    ) );
+    $customizer->add_setting( 'nexora_dark_footer_logo', array( 'default' => true, 'sanitize_callback' => 'nexora_sanitize_checkbox' ) );
+    $customizer->add_control( 'nexora_dark_footer_logo', array( 'label' => 'Use the dark-mode logo in the footer', 'description' => 'The footer always has a dark background, so a light logo usually reads better there.', 'section' => 'nexora_dark_options', 'type' => 'checkbox' ) );
+    foreach ( array(
+        'nexora_dark_bg' => array( 'Dark mode: page background', '#101815' ),
+        'nexora_dark_surface' => array( 'Dark mode: cards and panels', '#17211d' ),
+        'nexora_dark_surface_2' => array( 'Dark mode: raised areas and inputs', '#1f2b25' ),
+        'nexora_dark_border' => array( 'Dark mode: borders', '#2b3a32' ),
+        'nexora_dark_text' => array( 'Dark mode: text', '#e7efe9' ),
+        'nexora_dark_muted' => array( 'Dark mode: secondary text', '#a8b8ae' ),
+        'nexora_dark_accent' => array( 'Dark mode: accent (links, highlights)', '#6cc191' ),
+        'nexora_dark_header_bg' => array( 'Dark mode: header background', '#131d18' ),
+    ) as $key => $config ) {
+        $customizer->add_setting( $key, array( 'default' => $config[1], 'sanitize_callback' => 'sanitize_hex_color' ) );
+        $customizer->add_control( new WP_Customize_Color_Control( $customizer, $key, array( 'label' => $config[0], 'section' => 'nexora_dark_options' ) ) );
+    }
+    foreach ( array(
+        'nexora_toggle_icon_color' => array( 'Switch: icon colour', '#335d46' ),
+        'nexora_toggle_bg' => array( 'Switch: background', '#f0f6f1' ),
+        'nexora_toggle_border' => array( 'Switch: border', '#e4ece7' ),
+        'nexora_toggle_icon_color_dark' => array( 'Switch on dark mode: icon colour', '#d7e6dc' ),
+        'nexora_toggle_bg_dark' => array( 'Switch on dark mode: background', '#22332c' ),
+        'nexora_toggle_border_dark' => array( 'Switch on dark mode: border', '#31473c' ),
+    ) as $key => $config ) {
+        $customizer->add_setting( $key, array( 'default' => $config[1], 'sanitize_callback' => 'sanitize_hex_color' ) );
+        $customizer->add_control( new WP_Customize_Color_Control( $customizer, $key, array( 'label' => $config[0], 'section' => 'nexora_dark_options' ) ) );
+    }
 
     /* ---- 2. Header & navigation ---- */
     $customizer->add_section( 'nexora_header_options', array( 'title' => __( 'Header & Navigation', 'nexora-trade' ), 'description' => __( 'Menu items are managed in Appearance > Menus.', 'nexora-trade' ), 'panel' => 'nexora_portal_options' ) );
@@ -204,13 +262,16 @@ function nexora_trade_option_styles() {
     $width = nexora_sanitize_width( (string) get_theme_mod( 'nexora_content_width', '1320' ) );
     $radius = nexora_sanitize_radius( (string) get_theme_mod( 'nexora_corner_radius', '9' ) );
     $size = nexora_sanitize_font_size( (string) get_theme_mod( 'nexora_base_font_size', '14' ) );
-    $logo = nexora_sanitize_logo_height( (string) get_theme_mod( 'nexora_logo_height', '48' ) );
+    $logo = nexora_sanitize_logo_height( (string) get_theme_mod( 'nexora_logo_height', '56' ) );
     $system = 'system' === nexora_sanitize_font( get_theme_mod( 'nexora_font_style', 'modern' ) ) || ! get_theme_mod( 'nexora_load_webfonts', true );
     $body_font = $system ? "system-ui, -apple-system, 'Segoe UI', sans-serif" : "'DM Sans', Arial, sans-serif";
     $heading_font = $system ? "system-ui, -apple-system, 'Segoe UI', sans-serif" : 'Manrope, sans-serif';
     $css = ':root{--nexora-accent:' . $accent . ';--nexora-deep:' . $deep . ';--nexora-background:' . $background . ';--nexora-text:' . $text . ';--nexora-width:' . $width . 'px;--nexora-radius:' . $radius . 'px;--nexora-font-size:' . $size . 'px;--nexora-logo-height:' . $logo . 'px;--nexora-topbar:' . $topbar . ';--nexora-body-font:' . $body_font . ';--nexora-heading-font:' . $heading_font . '}';
     $css .= 'body{background:var(--nexora-background);color:var(--nexora-text);font-family:var(--nexora-body-font);font-size:var(--nexora-font-size)}';
     $css .= '.shell{max-width:var(--nexora-width)}.custom-logo{max-height:var(--nexora-logo-height);width:auto}';
+    $css .= '@media(min-width:801px){.site-header .header-top{height:calc(78px + max(0px, var(--nexora-logo-height) - 56px))}}';
+    $css .= '@media(max-width:800px){.custom-logo{max-height:min(var(--nexora-logo-height),46px)}}';
+    $css .= '.custom-logo-link.has-light-logo .custom-logo-dark{display:none}html[data-nexora-theme="dark"] .custom-logo-link.has-light-logo .custom-logo-light{display:none}html[data-nexora-theme="dark"] .custom-logo-link.has-light-logo .custom-logo-dark{display:block}';
     $css .= '.brand-symbol,.site-footer,.portal-topbar{background:var(--nexora-deep)}.portal-topbar{background:var(--nexora-topbar)}';
     $css .= '.button-dark,.woocommerce a.button,.woocommerce button.button,.nexora-partner-form button{background:var(--nexora-accent)}';
     $css .= '.text-link,.mini-link,.entry-content a,.nexora-sample-product a{color:var(--nexora-accent)}';

@@ -1,5 +1,5 @@
 Aqara Trade Partner Portal — WordPress theme
-Version 2.7.0
+Version 2.8.0
 
 EDITING SHORTCUTS
 - A "Trade Portal" menu appears in the WordPress admin bar (for anyone who can edit pages) with one-click links to Theme options, Demo content, Menus and "Edit homepage (Elementor)".
@@ -25,7 +25,9 @@ LICENSED PLUGINS YOU ALREADY OWN
 - Conflict checks that matter: two page builders on one page; two menu systems in the header; two lightbox/gallery scripts on product pages; two slider scripts competing for full-width layout. Each of these is a configuration choice, not a code incompatibility.
 
 THEME OPTIONS (Appearance > Customize > Trade Portal Options)
-- Brand, Colours & Layout: accent, deep, background and text colours; content width; card corners; typography (modern webfonts or system fonts); base text size; constrained or full-width theme pages; logo height; load Google webfonts on/off (useful for privacy or offline hosting); sticky header on/off; small label beside the logo.
+- Brand, Colours & Layout: accent, deep, background and text colours; content width; card corners; typography (modern webfonts or system fonts); base text size; constrained or full-width theme pages; logo height; load Google webfonts on/off (useful for privacy or offline hosting); sticky header on/off; small label beside the logo; and the optional dark-mode logo.
+- Dark Mode: a light/dark switch in the header. Set the starting scheme (match the visitor's device, always light or always dark), show or hide the switch, and recolour every part of the dark palette (page, cards, raised areas, borders, text, secondary text, accent, header) plus both states of the switch button. Visitors' choices are remembered in their browser; the switch is keyboard accessible and labelled for screen readers.
+- LOGOS: upload the standard logo under Site Identity, then a light or white version under Trade Portal Options > Brand, Colours & Layout > "Logo for dark mode". The header swaps to it automatically in dark mode and the footer uses it by default (switch this off under Dark Mode if you prefer). Leave it blank to use one logo everywhere.
 - Header & Navigation: portal label, navigation note, support label, search placeholder, account/login/logout labels, show or hide the search field, support link and account links, support page URL, support form recipient email.
 - Announcement Bar: a slim bar above the header for current news, with its own text, link and background colour. Useful for "New products launched" or "Updated documentation".
 - Footer & Contact: brand description, support column text and link, footer tagline note, copyright line with {year} and {sitename} placeholders, plus phone, email, address and opening hours with a show/hide switch. Footer columns can use assigned menus instead of the defaults.
@@ -37,7 +39,7 @@ THEME OPTIONS (Appearance > Customize > Trade Portal Options)
 
 WHAT IS EDITED WHERE
 - Page content and demo homepage: Edit with Elementor. The layouts are native Elementor Free sections, columns and widgets, not a single HTML block. The theme uses normal classic sections for compatibility; Elementor may offer to convert sections into Flexbox containers.
-- Header/footer, logo, colours and menus: WordPress Customizer and Menus, supplied by the theme. Elementor Free does not provide Elementor Pro's Theme Builder; the theme header and footer are not Elementor templates.
+- Header, colours and menus: WordPress Customizer and Menus, supplied by the theme. The header logo defaults to 56px tall (up from 48px) and can be set from 24px to 160px under Trade Portal Options > Brand, Colours & Layout > Logo height; the header grows with it on desktop and caps the logo at 46px on small screens. Elementor Free does not provide Elementor Pro's Theme Builder; the theme header and footer are not Elementor templates.
 - News: WordPress Posts. A shortcode widget displays recent published posts. Click the widget to change the shortcode or replace it.
 - Products: the Products page is an editable Elementor page with a [nexora_products] shortcode widget. With WooCommerce active and published products, it shows the WooCommerce product grid; without products it shows examples. The actual WooCommerce product archive and single-product pages use theme/WooCommerce templates, not Elementor Pro templates. Maintain products in Products > All Products.
 - Support: the [nexora_partner_support] shortcode widget supplies a basic form using WordPress wp_mail. Set the recipient in Trade Portal Options > Header & Navigation and configure and test SMTP/delivery on your host. You can replace the shortcode with another form plugin if desired.
@@ -51,6 +53,21 @@ The Elementor demo importer tracks the new pages, files, news, products and menu
 
 PRIVATE ACCESS AND LAUNCH
 The theme alone does not restrict access. Configure a suitable membership/access-control plugin, secure uploaded files, and test while logged out before publishing private partner material. Configure WordPress email delivery, replace all placeholder content, test responsive layouts and forms, and use a child theme for code changes. The separate Next.js preview is a design demonstration and does not import its database or resources into WordPress.
+
+== 2.8.0 ==
+* Dark mode: a header switch with a dark palette for the header, cards, forms, footer, Elementor demo
+  layouts and the companion plugin's resource library. No white flash on load, keyboard accessible,
+  and screen-reader labelled.
+* Dark mode starting scheme: match the visitor's device (default), always light or always dark.
+  Visitor choices are remembered per browser.
+* Dark-mode logo: upload a separate light/white logo for dark backgrounds. The header swaps
+  automatically and the footer uses it by default.
+* Elementor pages you build yourself keep their own widget colours; use Elementor's global colours and
+  per-widget settings if you add custom backgrounds. The included demo layouts and the theme's own
+  templates, shortcodes, forms and the companion plugin's library all follow dark mode automatically.
+* Logo is now larger by default (56px, was 48px); the Logo height setting accepts 24-160px and the
+  header grows with it. Small screens cap the logo at 46px so the header stays tidy.
+* All dark-mode colours and both states of the switch button are editable in the Customizer.
 
 == 2.6.0 ==
 * Product "Ask about this product" button now pre-fills the Support form with product name and SKU.
