@@ -6,7 +6,7 @@ function nexora_trade_setup() {
     load_theme_textdomain( 'nexora-trade', get_template_directory() . '/languages' );
     add_theme_support( 'title-tag' );
     add_theme_support( 'post-thumbnails' );
-    add_theme_support( 'custom-logo', array( 'height' => 96, 'width' => 320, 'flex-height' => true, 'flex-width' => true ) );
+    add_theme_support( 'custom-logo', array( 'height' => 120, 'width' => 420, 'flex-height' => true, 'flex-width' => true ) );
     add_theme_support( 'html5', array( 'search-form', 'gallery', 'caption', 'style', 'script' ) );
     add_theme_support( 'woocommerce' );
     add_theme_support( 'wc-product-gallery-zoom' );
@@ -23,10 +23,10 @@ add_action( 'after_setup_theme', 'nexora_trade_setup' );
 function nexora_trade_assets() {
     $webfonts = get_theme_mod( 'nexora_load_webfonts', true ) && 'modern' === get_theme_mod( 'nexora_font_style', 'modern' );
     if ( $webfonts ) { wp_enqueue_style( 'nexora-trade-fonts', 'https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap', array(), null ); }
-    wp_enqueue_style( 'nexora-trade-style', get_stylesheet_uri(), array(), '2.7.0' );
-    wp_enqueue_style( 'nexora-trade-demo', get_template_directory_uri() . '/assets/elementor-demo.css', array( 'nexora-trade-style' ), '2.7.0' );
-    wp_enqueue_script( 'nexora-trade-navigation', get_template_directory_uri() . '/assets/navigation.js', array(), '2.7.0', true );
-    wp_enqueue_script( 'nexora-trade-compat', get_template_directory_uri() . '/assets/compatibility.js', array(), '2.7.0', true );
+    wp_enqueue_style( 'nexora-trade-style', get_stylesheet_uri(), array(), '2.8.0' );
+    wp_enqueue_style( 'nexora-trade-demo', get_template_directory_uri() . '/assets/elementor-demo.css', array( 'nexora-trade-style' ), '2.8.0' );
+    wp_enqueue_script( 'nexora-trade-navigation', get_template_directory_uri() . '/assets/navigation.js', array(), '2.8.0', true );
+    wp_enqueue_script( 'nexora-trade-compat', get_template_directory_uri() . '/assets/compatibility.js', array(), '2.8.0', true );
 }
 add_action( 'wp_enqueue_scripts', 'nexora_trade_assets' );
 
@@ -65,6 +65,8 @@ function nexora_trade_copyright() {
 }
 
 require_once get_template_directory() . '/inc/compat.php';
+require_once get_template_directory() . '/inc/branding.php';
+require_once get_template_directory() . '/inc/dark-mode.php';
 require_once get_template_directory() . '/inc/customizer.php';
 require_once get_template_directory() . '/inc/theme-options.php';
 require_once get_template_directory() . '/inc/portal-shortcodes.php';
